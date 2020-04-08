@@ -1,0 +1,26 @@
+---
+- name: Create deploy user
+  user:
+    name: "{{ user }}"
+    password: "{{ password | password_hash('sha512') }}"
+    generate_ssh_key: yes
+    shell: /bin/bash
+    update_password: on_create
+
+- name: Add authorized deploy keys
+  action: "authorized_key user={{ user }} key=\"{{ lookup('file', item) }}\""
+  with_items: '{{ ssh_public_key_files }}'
+
+- name: Remove sudo group rights
+  action: lineinfile dest=/etc/sudoers regexp="^%sudo" state=absent
+
+- name: Add deploy user to sudoers
+  action: 'lineinfile dest=/etc/sudoers regexp="{{ user }} ALL" line="{{ user }} ALL=(ALL) NOPASSWD: ALL" state=present'
+
+- name: Disallow root SSH access
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin no" state=present
+  notify: Restart sshd
+
+- name: Disallow password authentication
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
+  notify: Restart sshd

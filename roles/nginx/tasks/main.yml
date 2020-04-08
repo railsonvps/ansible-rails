@@ -1,0 +1,22 @@
+---
+- name: Install Nginx
+  apt: name=nginx state=latest
+
+- name: Check for dhparam.pem
+  stat: path=/etc/nginx/dhparam.pem
+  register: dhparam
+
+- name: Generate dhparam
+  command: openssl dhparam -out /etc/nginx/dhparam.pem 2048
+
+- name: Copy nginx configuration
+  template: src=nginx_conf dest=/etc/nginx/sites-available/{{ app_name }} owner=root group=root
+
+- name: Disable default config
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: Symlink to sites-enabled
+  file: src=/etc/nginx/sites-available/{{ app_name }} dest=/etc/nginx/sites-enabled/{{ app_name }} owner=root group=root state=link
+
+- name: Copy htpasswd
+  template: src=htpasswd dest=/etc/nginx/.htpasswd owner=root group=root

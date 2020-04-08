@@ -44,9 +44,8 @@ If you have more experience, this might be all the information you need:
 ### Setup
 1. Copy `hosts.example` to `hosts` and add your server's host name to it.
 2. Copy `group_vars/all.example` to `group_vars/all` and set all included variables.
-3. Run `ansible-galaxy install -r requirements.yml`
-4. Run `ansible-playbook site.yml -i hosts`
-5. Integrate your app with Capistrano according to [Integrating with your app](https://www.railsonvps.com/docs/getting-started/integrating-with-your-app).
+3. Run `ansible-playbook site.yml -i hosts`
+4. Integrate your app with Capistrano according to [Integrating with your app](https://www.railsonvps.com/docs/getting-started/integrating-with-your-app).
 
 ## Support and Contributing
 If you're running into issues, please let me know by creating an issue. PRs are, of course, very welcome!  

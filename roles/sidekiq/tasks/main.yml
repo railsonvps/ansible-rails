@@ -1,0 +1,5 @@
+- name: Install sidekiq systemd unit file
+  template: src=sidekiq.conf dest=/etc/systemd/system/sidekiq_{{ app_name }}.service
+
+- name: Start sidekiq
+  systemd: state=started name=sidekiq_{{ app_name }} daemon_reload=yes

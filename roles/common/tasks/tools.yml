@@ -1,0 +1,7 @@
+- name: Install Tools
+  apt:
+    name: [ 'build-essential', 'libssl-dev', 'libyaml-dev', 'libreadline-dev',
+            'zlib1g-dev', 'libgdbm5', 'libgdbm-dev', 'libcurl4-openssl-dev',
+            'git-core', 'wget', 'curl', 'libffi-dev', 'nodejs']
+    state: latest
+    update_cache: true

@@ -1,0 +1,31 @@
+---
+# System
+timezone: America/New_York  # pick one from: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+locale: en_US.UTF-8
+
+# General
+domain: app.yourdomain.com
+app_name: sample_app
+user: deploy
+password: 123abc
+email: email_for_certbot@example.com
+
+ssh_public_key_files:
+  - /Users/your_home_folder/.ssh/id_rsa.pub
+
+# Postgres
+postgresql_version: 12
+database_password: 123abc
+postgresql_databases:
+  - name: "{{ app_name }}"
+postgresql_users:
+  - name: "{{ app_name }}"
+    pass: "{{ database_password }}"
+
+# Ruby
+ruby_install_version: 0.7.0
+chruby_version: 0.3.9
+ruby_version: 2.7.0
+
+# Rails
+master_key: 123abc  # copy from config/master.key in your Rails app directory

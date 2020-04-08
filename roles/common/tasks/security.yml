@@ -1,0 +1,24 @@
+---
+- name: Install firewall
+  apt:
+    name: "ufw"
+
+- name: Configure open ports
+  ufw: rule=allow port={{ item }}
+  tags: firewall
+  with_items:
+    - 22
+    - 80
+    - 443
+
+- name: Set default policy to deny and start firewall
+  tags: firewall
+  ufw:
+    policy: "deny"
+    state: "enabled"
+
+- name: Enable automated security updates
+  apt: name=unattended-upgrades state=present
+
+- name: Install and run Fail2ban
+  apt: name=fail2ban state=present

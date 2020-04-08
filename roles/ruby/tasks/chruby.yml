@@ -1,0 +1,25 @@
+---
+- name: Download chruby
+  unarchive:
+    src: "https://github.com/postmodern/chruby/archive/v{{ chruby_version }}.tar.gz"
+    dest: /home/{{ user }}/deploy/
+    remote_src: yes
+
+- name: Install chruby
+  make: chdir=/home/{{ user }}/deploy/chruby-{{ chruby_version }} target=install
+
+- name: Copy chruby.sh
+  copy: src=chruby.sh dest=/etc/profile.d/chruby.sh owner=root group=root
+
+- name: Install Bundler
+  command: /opt/rubies/ruby-{{ ruby_version }}/bin/gem install bundler
+
+- name: Add chruby.sh to .bashrc
+  lineinfile:
+    path: /home/{{ user }}/.bashrc
+    line: 'source /etc/profile.d/chruby.sh'
+
+- name: Add chruby {{ ruby_version }} to .bashrc
+  lineinfile:
+    path: /home/{{ user }}/.bashrc
+    line: 'chruby ruby-{{ ruby_version }}'

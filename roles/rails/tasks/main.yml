@@ -1,0 +1,36 @@
+---
+- name: Create deploy dir
+  file: path=/home/{{ user }}/{{ app_name }} state=directory owner={{ user }} group={{ user }}
+
+- name: Create shared directories
+  file:
+    path: "/home/{{ user }}/{{ app_name }}/{{ item }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - releases
+    - repo
+    - shared
+    - shared/config
+    - shared/log
+    - shared/public
+    - shared/tmp
+
+- name: Copy master.key
+  template: src=master.key dest=/home/{{ user }}/{{ app_name }}/shared/config/master.key owner={{ user }} group={{ user }}
+
+- name: Copy database.yml
+  template: src=database.yml dest=/home/{{ user }}/{{ app_name }}/shared/config/database.yml owner={{ user }} group={{ user }}
+
+- name: Copy sidekiq.yml
+  template: src=sidekiq.yml dest=/home/{{ user }}/{{ app_name }}/shared/config/sidekiq.yml owner={{ user }} group={{ user }}
+
+- name: Copy puma.rb
+  template: src=puma.rb dest=/home/{{ user }}/{{ app_name }}/shared/puma.rb owner={{ user }} group={{ user }}
+
+- name: Restart Nginx
+  service: name=nginx state=restarted enabled=yes
+
+- name: Ensure Nginx is running
+  service: name=nginx state=started enabled=yes
