@@ -4,7 +4,7 @@
     name: "ufw"
 
 - name: Configure open ports
-  ufw: rule=allow port={{ item }}
+  ufw: rule=allow port={{ item | string }}
   tags: firewall
   with_items:
     - 22
