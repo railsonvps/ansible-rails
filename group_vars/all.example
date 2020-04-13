@@ -29,3 +29,9 @@ ruby_version: 2.7.0
 
 # Rails
 master_key: 123abc  # copy from config/master.key in your Rails app directory
+
+# Puma (application server)
+# You may tune the values below to optimize throughput based on your server's resources.
+# See https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server for additional information.
+puma_workers: 2  # More workers increase memory (RAM) usage.
+puma_threads: 4,16  # Min, Max number of threads. More threads increase CPU usage.
