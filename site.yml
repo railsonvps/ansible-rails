@@ -6,9 +6,7 @@
   roles:
     - common
     - deploy-user
-    - src: https://github.com/ANXS/postgresql
-      version: v1.12.0
-      name: ANXS.postgresql
+    - ANXS.postgresql
     - redis
     - sidekiq
     - nginx
