@@ -15,6 +15,7 @@ ssh_public_key_files:
 
 # Postgres
 postgresql_version: 12
+postgresql_ext_install_dev_headers: yes
 database_password: 123abc
 
 # Ruby
