@@ -6,6 +6,7 @@
   roles:
     - common
     - deploy-user
+    - geerlingguy.nodejs
     - role: ANXS.postgresql
       vars:
         postgresql_databases:

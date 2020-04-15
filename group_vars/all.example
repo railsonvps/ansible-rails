@@ -22,6 +22,9 @@ ruby_install_version: 0.7.0
 chruby_version: 0.3.9
 ruby_version: 2.7.0
 
+# Node.js
+nodejs_version: "12.x"
+
 # Puma (application server)
 # You may tune the values below to optimize throughput based on your server's resources.
 # See https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server for additional information.

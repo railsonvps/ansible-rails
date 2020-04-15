@@ -2,6 +2,6 @@
   apt:
     name: [ 'build-essential', 'libssl-dev', 'libyaml-dev', 'libreadline-dev',
             'zlib1g-dev', 'libgdbm5', 'libgdbm-dev', 'libcurl4-openssl-dev',
-            'git-core', 'wget', 'curl', 'libffi-dev', 'nodejs']
+            'git-core', 'wget', 'curl', 'libffi-dev']
     state: latest
     update_cache: true
