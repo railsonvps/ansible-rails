@@ -20,7 +20,7 @@ database_password: 123abc
 # Ruby
 ruby_install_version: 0.7.0
 chruby_version: 0.3.9
-ruby_version: 2.7.0
+ruby_version: 2.7.1
 
 # Node.js
 nodejs_version: "12.x"
