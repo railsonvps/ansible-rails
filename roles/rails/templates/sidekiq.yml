@@ -1,3 +1,5 @@
 :queues:
-  - trailreports_production_mailers
-  - trailreports_production_default
+  - critical
+  - default
+  - low
+  - mailers
