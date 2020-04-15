@@ -17,9 +17,6 @@
     - shared/public
     - shared/tmp
 
-- name: Copy master.key
-  template: src=master.key dest=/home/{{ user }}/{{ app_name }}/shared/config/master.key owner={{ user }} group={{ user }}
-
 - name: Copy database.yml
   template: src=database.yml dest=/home/{{ user }}/{{ app_name }}/shared/config/database.yml owner={{ user }} group={{ user }}
 
