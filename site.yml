@@ -6,7 +6,13 @@
   roles:
     - common
     - deploy-user
-    - ANXS.postgresql
+    - role: ANXS.postgresql
+      vars:
+        postgresql_databases:
+        - name: "{{ app_name }}"
+        postgresql_users:
+          - name: "{{ app_name }}"
+            pass: "{{ database_password }}"
     - redis
     - sidekiq
     - nginx

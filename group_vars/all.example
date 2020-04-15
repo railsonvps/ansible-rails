@@ -16,11 +16,6 @@ ssh_public_key_files:
 # Postgres
 postgresql_version: 12
 database_password: 123abc
-postgresql_databases:
-  - name: "{{ app_name }}"
-postgresql_users:
-  - name: "{{ app_name }}"
-    pass: "{{ database_password }}"
 
 # Ruby
 ruby_install_version: 0.7.0
