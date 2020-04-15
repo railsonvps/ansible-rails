@@ -1,20 +1,20 @@
 ---
-- name: Create deploy directory
+- name: Create ruby-install directory
   file:
     path: "/home/{{ user }}/"
     state: directory
 - name: Create ruby-install directory
   file:
-    path: "/home/{{ user }}/deploy/"
+    path: "/home/{{ user }}/ruby-install/"
     state: directory
 - name: Download and unpack ruby-install
   unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz"
-    dest: "/home/{{ user }}/deploy/"
+    dest: "/home/{{ user }}/ruby-install/"
     remote_src: yes
 
 - name: Install ruby-install
-  make: chdir=/home/{{ user }}/deploy/ruby-install-{{ ruby_install_version }} target=install
+  make: chdir=/home/{{ user }}/ruby-install/ruby-install-{{ ruby_install_version }} target=install
 
 - name: Create rubies directory
   file: path=/opt/rubies/ state=directory mode=0755 owner=root group=root
