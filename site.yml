@@ -17,8 +17,8 @@
           - name: "{{ app_name }}"
             pass: "{{ database_password }}"
     - redis
-    - sidekiq
     - nginx
     - certbot
     - ruby
     - rails
+    - sidekiq
