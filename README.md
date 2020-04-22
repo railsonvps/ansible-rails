@@ -6,7 +6,7 @@ A beginner-friendly and well-documented Ansible playbook that configures your Ub
 ## Who is it for?
 RailsOnVPS is trying to make it as easy as possible to run your Rails app on your own server.
 It is faster and cleaner than configuring a server "by hand" and makes it easy to switch servers if needed. 
-Running your own server is a great choice if you want to keep costs low and maintain full control over your environment or if you simply like the feeling of having my your own machine.  
+Running your own server is a great choice if you want to keep costs low and maintain full control over your environment or if you simply like the feeling of having your own machine.  
 
 You should know how to use a commandline, but we don't assume prior sysadmin experience.
 
@@ -39,13 +39,13 @@ If you have more experience, this might be all the information you need:
 
 ### Requirements
 * Ansible is installed on your local system 
-* You have root access to your server and it runs Ubuntu 18.04 or higher
+* You can log in to your server as `root` and it runs Ubuntu 18.04 or higher
 
 ### Setup
 1. Copy `hosts.example` to `hosts` and add your server's host name to it.
 2. Copy `group_vars/all.example` to `group_vars/all` and set all included variables.
-3. Run `ansible-playbook site.yml -i hosts`
-4. Integrate your app with Capistrano according to [Integrating with your app](https://www.railsonvps.com/docs/getting-started/integrating-with-your-app).
+3. Run `./configure_server.sh --initial-run`
+4. Integrate your app by configure Capistrano deployments according to [Integrating with your app](https://www.railsonvps.com/docs/getting-started/integrating-with-your-app).
 
 ## Support and Contributing
 If you're running into issues, please let me know by creating an issue. PRs are, of course, very welcome!  
