@@ -19,6 +19,7 @@ It manages basic configuration:
 * Set the system locale
 * Sets up a firewall
 * Creates a directory structure for deployments with Capistrano
+* Rotates your logs so you won't suddenly run out of disk space
 
 It installs the following components:
 * Nginx (webserver)

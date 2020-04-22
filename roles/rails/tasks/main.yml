@@ -26,6 +26,9 @@
 - name: Copy puma.rb
   template: src=puma.rb dest=/home/{{ user }}/{{ app_name }}/shared/puma.rb owner={{ user }} group={{ user }}
 
+- name: Create logrotate config
+  template: src=logrotate.conf dest=/etc/logrotate.d/{{ app_name }} owner=root group=root
+
 - name: Restart Nginx
   service: name=nginx state=restarted enabled=yes
 
